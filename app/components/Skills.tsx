@@ -6,7 +6,6 @@ function Skills() {
     "HTML",
     "CSS",
     "JavaScript",
-    "Blade",
     "Tailwind CSS",
     "Bootstrap",
     "TypeScript",

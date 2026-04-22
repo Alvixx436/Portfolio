@@ -3,7 +3,6 @@
 import React from "react";
 import {
   Card,
-  CardAction,
   CardDescription,
   CardFooter,
   CardHeader,
@@ -44,7 +43,7 @@ function GalleryList() {
     "
     >
       {images.map((item, index) => (
-        <div key={index} className="hover-3d w-full h-full">
+        <div key={index} className="hover-3d w-full h-full pointer-events-auto">
           <figure className="w-full h-full">
             <Card
               className="
@@ -56,6 +55,7 @@ function GalleryList() {
               hover:shadow-lg 
               transition-shadow 
               pb-6 pt-2
+              relative z-10
             "
             >
               {/* Image */}
@@ -78,7 +78,9 @@ function GalleryList() {
 
               {/* Footer */}
               <CardFooter className="mt-auto">
-                <Button className="w-full text-white">View Project</Button>
+                <a href="/projects/ticketing" className="w-full">
+                  <Button className="w-full text-white">View Project</Button>
+                </a>
               </CardFooter>
             </Card>
           </figure>

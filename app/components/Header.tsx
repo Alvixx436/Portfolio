@@ -36,13 +36,44 @@ function Header() {
 
             <span className="truncate">+639928111029</span>
           </p>
-          <p className="text-xs mb-1 md:text-sm  mt-0.5 flex items-center gap-1">
+          {/* <p className="text-xs mb-1 md:text-sm  mt-0.5 flex items-center gap-1">
             <i className="fa-solid fa-envelope"></i>
 
             <span className="truncate">gerolaoalvin436@gmail.com</span>
-          </p>
-          <div className="flex mb-5 items-center justify-between mt-1.5 md:mt-2">
+          </p> */}
+          <div className="flex mb-2 items-center justify-between mt-1.5 md:mt-2">
             <p className="text-[10px] md:text-base">Full-stack Developer</p>
+          </div>
+          <div>
+            <a
+              target="_blank"
+              rel="noopener noreferrer"
+              href="/portfolio/GerolaoAlvinResume.pdf"
+              download
+              className="inline-flex items-center h-7 md:h-8 rounded-lg 
+                        bg-primary text-white
+                        px-2.5 md:px-4 text-[8px] md:text-xs font-medium 
+                        transition-all duration-200 
+                        hover:opacity-90
+                        hover:-translate-y-0.5 
+                        gap-1 md:gap-1.5 whitespace-nowrap 
+                        no-underline"
+            >
+              <span className="text-left">Download CV</span>
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="1.5"
+                  d="M9 5l7 7-7 7"
+                />
+              </svg>
+            </a>
           </div>
         </div>
       </section>
