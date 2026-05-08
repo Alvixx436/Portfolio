@@ -1,9 +1,20 @@
-import React from "react";
+"use client";
+import React, { useEffect, useState } from "react";
 
 function Theme() {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const theme = e.target.checked ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  };
+
   return (
     <label className="toggle text-base-content">
-      <input type="checkbox" value="dark" className="theme-controller" />
+      <input
+        type="checkbox"
+        onChange={handleChange}
+        className="theme-controller"
+      />
 
       <svg
         aria-label="sun"

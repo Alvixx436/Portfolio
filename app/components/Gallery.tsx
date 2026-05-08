@@ -32,7 +32,7 @@ function Gallery() {
           </div>
 
           <div className="w-full px-4 py-2 ">
-            <GalleryList />
+            <GalleryList limit={3} />
           </div>
         </div>
       </div>
