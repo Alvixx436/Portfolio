@@ -1,10 +1,25 @@
+"use client";
+import { useState } from "react";
 import { Project } from "../type/image";
+import { FaReact, FaBootstrap } from "react-icons/fa";
+import { SiDotnet, SiLaravel, SiMysql, SiTailwindcss } from "react-icons/si";
+import { TbBrandCSharp } from "react-icons/tb";
 
+const icons: Record<string, any> = {
+  react: FaReact,
+  bootstrap: FaBootstrap,
+  dotnet: SiDotnet,
+  laravel: SiLaravel,
+  mysql: SiMysql,
+  tailwind: SiTailwindcss,
+  csharp: TbBrandCSharp,
+};
 type Props = {
   project: Project;
 };
 
 export default function ProjectDetails({ project }: Props) {
+  const [preview, setPreview] = useState(false);
   return (
     <div className="min-h-screen bg-background text-foreground px-6 transition-colors duration-300">
       {/* HEADER */}
@@ -50,10 +65,31 @@ export default function ProjectDetails({ project }: Props) {
             <img
               src={project.image}
               alt={project.title}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover cursor-pointer hover:scale-105 transition-transform duration-300"
+              onClick={() => setPreview(true)}
             />
           </div>
+          {preview && (
+            <div
+              className="bg-opacity-70 fixed inset-0 z-50 flex items-center justify-center bg-black"
+              onClick={() => setPreview(false)}
+            >
+              <img
+                src={project.image}
+                alt=""
+                className="max-h-[90%] max-w-[90%] rounded-lg shadow-lg"
+                onClick={(e) => e.stopPropagation()}
+              />
 
+              {/* Close Button */}
+              <button
+                className="absolute top-5 right-5 text-2xl text-white"
+                onClick={() => setPreview(false)}
+              >
+                ✕
+              </button>
+            </div>
+          )}
           {/* CONTENT */}
           <div>
             <span
@@ -78,22 +114,19 @@ export default function ProjectDetails({ project }: Props) {
               </h3>
 
               <div className="flex flex-wrap gap-2">
-                {project.techStack?.map((tech, index) => (
-                  <span
-                    key={index}
-                    className="
-                      px-3 py-1 text-sm
-                      bg-muted
-                      border border-border
-                      rounded-full
-                      flex items-center gap-1
-                      transition-colors
-                    "
-                  >
-                    <tech.logo className={tech.color} />
-                    {tech.name}
-                  </span>
-                ))}
+                {project.techStack?.map((tech, index) => {
+                  const Icon = icons[tech.logo];
+
+                  return (
+                    <span
+                      key={index}
+                      className="flex items-center gap-1 px-3 py-1 text-sm bg-muted border border-border rounded-full"
+                    >
+                      {Icon && <Icon className={tech.color} />}
+                      {tech.name}
+                    </span>
+                  );
+                })}
               </div>
             </div>
           </div>
